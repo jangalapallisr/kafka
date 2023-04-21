@@ -16,7 +16,8 @@
 
 4. Download kafka (3.4.0, kraft) and untar - reference https://kafka.apache.org/quickstart
 	cd /opt/kafka
-	wget https://dlcdn.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz
+	sudo wget https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz or 
+	curl -O https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz
 	tar -xzf kafka_2.13-3.4.0.tgz
 5. Actual fun begins here,...at "server.properties" file ** key is kraft folder
 	cd /opt/kafka/config/kraft
