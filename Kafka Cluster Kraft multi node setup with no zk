@@ -1,4 +1,4 @@
-********Kafka multi node setup (in Kraft mode, no zookeeper)*********Kafka V3.4.0======
+********Kafka Cluster multi different node install/setup (in Kraft mode, no zookeeper)*********Kafka V3.4.0======
 1. Login (ssh) to each box update & install yum & wget
 		sudo yum update -y
 		sudo yum install wget -y 
