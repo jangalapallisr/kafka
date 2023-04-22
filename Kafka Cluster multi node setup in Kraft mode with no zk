@@ -1,8 +1,8 @@
 ********Kafka Cluster multi different node install/setup (in Kraft mode, no zookeeper)*********Kafka V3.4.0======
 1. Login (ssh) to each box update & install yum & wget
 		login to jump box or connect to machines that you have access directly
-		sudo yum update -y
-		sudo yum install wget -y 
+		yum update -y
+		yum install -y wget curl java 
 2. AWS EC2 Instances(RHEL): add into /etc/hosts file and ping the hosts from one box to other, it should communicate each other.
 		10.20.2.217 kafka1
 		10.20.3.33 kafka2
@@ -10,10 +10,9 @@
 3. Create a user "kafka" 
 		useradd kafka
 4. Create couple of directories and update & install yum & wget
-		sudo su kafka
 		mkdir -p /data/kafka/kafka1.logs /data/kafka/kafka2.logs /data/kafka/kafka3.logs
 		mkdir -p /opt/kafka
-
+		chown -R kafka:kafka data opt
 4. Download kafka (3.4.0, kraft) and untar - reference https://kafka.apache.org/quickstart
 	cd /opt/kafka
 	sudo wget https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz or 
