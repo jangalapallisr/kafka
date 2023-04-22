@@ -76,7 +76,7 @@ sudo systemctl start kafka
 systemctl status kafka
 sudo systemctl stop kafka
 systemctl status kafka
-systemctl enable kafka.service --> 
+systemctl enable kafka.service --> To enbale service to pick-up on reboot [op/:Created symlink /etc/systemd/system/multi-user.target.wants/kafka.service → /etc/systemd/system/kafka.service.]
 11. Few Samples:
 sudo /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:9092,kafka2:9092,kafka3:9092 --version
 sudo /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:9092,kafka2:9092,kafka3:9092 --list
