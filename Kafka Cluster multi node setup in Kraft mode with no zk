@@ -35,7 +35,7 @@
 		log.dirs=/data/kafka/kafka2.logs  -->Kafka2 box
 		log.dirs=/data/kafka/kafka3.logs  -->Kafka3 box
 6. Generate a Cluster UUID in anyone of the box, and make sure rest of other boxes must have same cluster ID by export
-	KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)" --> any box
+	KAFKA_CLUSTER_ID="$(/opt/kafka/bin/kafka-storage.sh random-uuid)" --> any box
 	and set/export same echo $KAFKA_CLUSTER_ID in other boxes
 		export KAFKA_CLUSTER_ID=`echo $KAFKA_CLUSTER_ID` (backquote `, not single ' or double ") or copy & past xport KAFKA_CLUSTER_ID="......."
 7. Format Log Directories
@@ -76,6 +76,7 @@ sudo systemctl start kafka
 systemctl status kafka
 sudo systemctl stop kafka
 systemctl status kafka
+systemctl enable kafka.service --> 
 11. Few Samples:
 sudo /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:9092,kafka2:9092,kafka3:9092 --version
 sudo /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka1:9092,kafka2:9092,kafka3:9092 --list
