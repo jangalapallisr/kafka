@@ -1,0 +1,21 @@
+VERSION:
+./kafka-topics.sh --bootstrap-server kafka1:9092,kafka2:9092,kafka3:9092 --version
+CREATE TOPIC:
+ ./kafka-topics.sh --bootstrap-server="10.0.48.137:9092 10.0.67.162:9092 10.0.149.52:9092" --command-config kafka.properties --create --topic dpt_test_1p1r --replication-factor 1 --partitions 1
+./kafka-topics.sh --bootstrap-server="kafka1:9092 kafka2:9092 kafka3:9092"  --create --topic dpt-test-10p3r --replication-factor 3 --partitions 10
+
+LIST OF TOPICS:
+./kafka-topics.sh --bootstrap-server="10.0.48.137:9092 10.0.67.162:9092 10.0.149.52:9092" --command-config ic_aws_kafka.properties —list
+./kafka-topics.sh --bootstrap-server="kafka1:9092 kafka2:9092 kafka3:9092"  —list
+
+DESCRIBE ABOUT TOPIC:
+./kafka-topics.sh --bootstrap-server="10.0.48.137:9092 10.0.67.162:9092 10.0.149.52:9092" --command-config ic_aws_kafka.properties --describe --topic dpt-test-10p3r
+./kafka-topics.sh --bootstrap-server="kafka1:9092 kafka2:9092 kafka3:9092" --describe --topic dpt-test-10p3r
+
+PRODUCER HIT:
+./kafka-producer-perf-test.sh  --topic sj-test --num-records 100 --record-size 100 --throughput -1 --producer-props bootstrap.servers="10.0.48.137:9092 10.0.67.162:9092 10.0.149.52:9092" --producer.config kafka.properties --print-metrics
+./kafka-producer-perf-test.sh  --topic sj-test --num-records 100 --record-size 100 --throughput -1 --producer-props bootstrap.servers="kafka1:9092 kafka2:9092 kafka3:9092" --print-metrics
+
+CONSUMER HIT:
+./kafka-consumer-perf-test.sh --topic sj-test --bootstrap-server="10.0.48.137:9092 10.0.67.162:9092 10.0.149.52:9092" --messages 1000 --consumer.config ic_aws_kafka.properties --print-metrics
+./kafka-consumer-perf-test.sh --topic sj-test --bootstrap-server="kafka1:9092 kafka2:9092 kafka3:9092" --messages 1000 --print-metrics
